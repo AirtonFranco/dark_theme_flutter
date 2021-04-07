@@ -13,7 +13,7 @@ class FlutterandoCourse extends StatelessWidget {
       animation: AppController.instance,
       builder: (context, child){
         return MaterialApp(
-          
+          debugShowCheckedModeBanner: false,
           home: HomePage(),
         );
       },

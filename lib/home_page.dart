@@ -15,6 +15,7 @@ class _HomePageState extends State<HomePage> {
 
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue, brightness: 
         AppController.instance.isDartTheme 
@@ -22,17 +23,36 @@ class _HomePageState extends State<HomePage> {
         : Brightness.light
       ),
       home: Scaffold(appBar: AppBar(
+        actions: [
+          SwitchButton()
+        ],
         title: Center(
           child: Text('Dark Theme in Flutter'),
         ),
       ),
-      body: Center(
-        child: Switch(value: AppController.instance.isDartTheme, 
-        onChanged: (value){
-          AppController.instance.changeTheme();
-        },),
-      ),
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text('Dark Mode flutter'),
+            SwitchButton()
+          ],
+        ),
+      )
       ),
     );
+  }
+}
+
+class SwitchButton extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Switch(value: AppController.instance.isDartTheme, 
+        onChanged: (value){
+          AppController.instance.changeTheme();
+        },);
   }
 }
